@@ -1,13 +1,97 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package modell;
 
-/**
- *
- * @author berta
- */
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+
 public class Tabla {
+
+    private char[][] T= new char[8][8];
+    private char UresCella;
+    List<Character> helyek = new ArrayList<>();
+
+    public Tabla(char betu) {
+        
+        this.UresCella = betu;
+        for (int i = 0; i < T.length; i++) {
+            for (int j = 0; j < T[i].length; j++) {
+                T[i][j] = UresCella;
+            }
+        }
+        
+    }
+    public char[][] getT() {
+        return T;
+    }
+
+    public char getUresCella() {
+        return UresCella;
+    }
+
+       public void Megjelenit() {
+        for (int i = 0; i < T.length; i++) {
+            for (int j = 0; j < T[i].length; j++) {
+                System.out.print(T[i][j] + " ");
+            }
+            System.out.println();
+        }
+        System.out.println();
+    }
+
+    public void Elhelyez(int db) {
+        char Kiralyno = 'K';
+        Random random = new Random();
+
+        for (int i = 0; i < db; i++) {
+            int randomSor = random.nextInt(8);
+            int randomOszlop = random.nextInt(8);
+
+            while (T[randomSor][randomOszlop] == Kiralyno) {
+                randomSor = random.nextInt(8);
+                randomOszlop = random.nextInt(8);
+            }
+
+            T[randomSor][randomOszlop] = Kiralyno;
+        }
+    }
     
+
+    public void FájlbaÍr() {
+    }
+
+   
+//7.feladat
+    public boolean ÜresOszlop(int oszlop) {
+        for (int i = 0; i < T.length; i++) {
+            if (T[i][oszlop] == 'K') {
+                System.out.println("A karakter megtalalhato az oszlopban: [" + i + "][" + oszlop + "]");
+                return true; 
+            }
+        }
+
+        System.out.println("A karakter nem talalhato az oszlopban.");
+        return false; 
+    }
+        
+    
+
+    public boolean ÜresSor(int sor) {
+        for (int j = 0; j < T[sor].length; j++) {
+            if (T[sor][j] == 'K') {
+                System.out.println("A karakter megtalalhato a sorban: [" + sor + "][" + j + "]");
+                return true; // Ha megtaláltuk a karaktert, visszatérünk true értékkel
+            }
+        }
+
+        System.out.println("A karakter nem talalhato az oszlopban.");
+        return false; 
+    }
+    //8.feladat
+
+    public void ÜresOszlopokSzáma() {
+    }
+
+    public void ÜresSorokSzáma() {
+    }
+
 }
