@@ -63,18 +63,8 @@ public class Tabla {
         }
     }
 
-    public void FájlbaÍr() throws IOException {
-        String fajlnev = "tablak64.txt";
-        for (int i = 0; i <= 7; i++) {
-                StringBuilder sor = new StringBuilder();
-                for (int j = 0; j <= 7; j++) {
-                    sor.append(T[i][j]).append(" ");
-                }
-                sor.append(System.lineSeparator());
-                Files.writeString(Path.of(fajlnev), sor.toString(), StandardOpenOption.APPEND);
-            }
-            Files.writeString(Path.of(fajlnev), System.lineSeparator(), StandardOpenOption.APPEND);
-        } 
+    public void FájlbaÍr() {
+    }
     
 
 //7.feladat
