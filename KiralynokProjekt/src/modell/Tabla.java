@@ -103,7 +103,7 @@ public class Tabla {
     }
     //8.feladat
 
-    public int UresOszlopokSzama() {
+    public String UresOszlopokSzama() {
     int db = 0;
 
     for (int i = 0; i <= 7; i++) {
@@ -112,10 +112,10 @@ public class Tabla {
         }
     }
 
-    return db;
+    return db+"darab";
 }
 
-    public int ÜresSorokSzáma() {
+    public String ÜresSorokSzáma() {
         int db = 0;
 
         for (int i = 0; i <= 7; i++) {
@@ -124,7 +124,7 @@ public class Tabla {
             }
         }
 
-        return db;
+        return db+"darab";
 
     }
 
