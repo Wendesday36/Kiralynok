@@ -1,25 +1,30 @@
 package modell;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
 public class Tabla {
 
-    private char[][] T= new char[8][8];
+    private char[][] T = new char[8][8];
     private char UresCella;
     List<Character> helyek = new ArrayList<>();
 
     public Tabla(char betu) {
-        
+
         this.UresCella = betu;
         for (int i = 0; i < T.length; i++) {
             for (int j = 0; j < T[i].length; j++) {
                 T[i][j] = UresCella;
             }
         }
-        
+
     }
+
     public char[][] getT() {
         return T;
     }
@@ -28,14 +33,17 @@ public class Tabla {
         return UresCella;
     }
 
-       public void Megjelenit() {
-        for (int i = 0; i < T.length; i++) {
+    public String Megjelenit() {
+         String szoveg="";
+         for (int i = 0; i < T.length; i++) {
             for (int j = 0; j < T[i].length; j++) {
-                System.out.print(T[i][j] + " ");
+                szoveg+=(T[i][j]);
             }
-            System.out.println();
+            szoveg+=("\n");
         }
-        System.out.println();
+        szoveg+=("\n");
+
+        return szoveg;
     }
 
     public void Elhelyez(int db) {
@@ -54,44 +62,70 @@ public class Tabla {
             T[randomSor][randomOszlop] = Kiralyno;
         }
     }
+
+    public void FájlbaÍr() throws IOException {
+        String fajlnev = "tablak64.txt";
+        for (int i = 0; i <= 7; i++) {
+                StringBuilder sor = new StringBuilder();
+                for (int j = 0; j <= 7; j++) {
+                    sor.append(T[i][j]).append(" ");
+                }
+                sor.append(System.lineSeparator());
+                Files.writeString(Path.of(fajlnev), sor.toString(), StandardOpenOption.APPEND);
+            }
+            Files.writeString(Path.of(fajlnev), System.lineSeparator(), StandardOpenOption.APPEND);
+        } 
     
 
-    public void FájlbaÍr() {
-    }
-
-   
 //7.feladat
-    public boolean ÜresOszlop(int oszlop) {
+    public boolean UresOszlop(int oszlop) {
         for (int i = 0; i < T.length; i++) {
             if (T[i][oszlop] == 'K') {
-                System.out.println("A karakter megtalalhato az oszlopban: [" + i + "][" + oszlop + "]");
-                return true; 
+//                System.out.println("A karakter megtalalhato az oszlopban: [" + i + "][" + oszlop + "]");
+                return true;
             }
         }
 
-        System.out.println("A karakter nem talalhato az oszlopban.");
-        return false; 
+//        System.out.println("A karakter nem talalhato az oszlopban.");
+        return false;
     }
-        
-    
 
-    public boolean ÜresSor(int sor) {
+    public boolean UresSor(int sor) {
         for (int j = 0; j < T[sor].length; j++) {
             if (T[sor][j] == 'K') {
-                System.out.println("A karakter megtalalhato a sorban: [" + sor + "][" + j + "]");
-                return true; // Ha megtaláltuk a karaktert, visszatérünk true értékkel
+//                System.out.println("A karakter megtalalhato a sorban: [" + sor + "][" + j + "]");
+                return true;
             }
         }
 
-        System.out.println("A karakter nem talalhato az oszlopban.");
-        return false; 
+//        System.out.println("A karakter nem talalhato az oszlopban.");
+        return false;
     }
     //8.feladat
 
-    public void ÜresOszlopokSzáma() {
+    public int UresOszlopokSzama() {
+    int db = 0;
+
+    for (int i = 0; i <= 7; i++) {
+        if (UresOszlop(i)) {
+            db++;
+        }
     }
 
-    public void ÜresSorokSzáma() {
+    return db;
+}
+
+    public int ÜresSorokSzáma() {
+        int db = 0;
+
+        for (int i = 0; i <= 7; i++) {
+            if (UresSor(i)) {
+                db++;
+            }
+        }
+
+        return db;
+
     }
 
 }
