@@ -115,7 +115,7 @@ public class Tabla {
     return db+"darab";
 }
 
-    public String ÜresSorokSzáma() {
+    public String UresSorokSzáma() {
         int db = 0;
 
         for (int i = 0; i <= 7; i++) {

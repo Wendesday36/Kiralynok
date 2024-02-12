@@ -13,8 +13,8 @@ public class main {
         System.out.println(t1.Megjelenit()); 
         t1.UresSor(5);
         t1.UresOszlop(2);
-        t1.UresOszlopokSzama();
-        t1.ÜresSorokSzáma();
+        System.out.println(t1.UresOszlopokSzama()); 
+        t1.UresSorokSzáma();
         
     }
     
